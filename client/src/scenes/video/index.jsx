@@ -23,16 +23,22 @@ import { TextareaAutosize } from "@mui/base";
 import Header from "../../components/Header";
 //import { ResponsiveChoropleth } from "@nivo/geo";
 import FlexBetween from "../../components/FlexBetween";
-import logo from "../../assets/png/logo 1.png";
+//import logo from "../../assets/png/logo 1.png";
 import { AccountCircle } from "@mui/icons-material";
 //import { DropzoneArea } from "material-ui-dropzone";
+
+
 const Video = () => {
-  //const theme = useTheme();
+
+  const theme = useTheme();
+
   const [forumVideo, setForumVideo] = useState({
     upload: false
   });
   const [checked, setChecked] = useState([]);
   const [expanded, setExpanded] = useState([]);
+
+  
   const steps = [
     {
       label: "importez votre publicité.",
@@ -67,7 +73,9 @@ const Video = () => {
     setActiveStep(0);
   };
   const renderAreas = (areas) => {
+
     let myAreas = [];
+
     for (let area of areas) {
       myAreas.push({
         label: area.name,
@@ -77,11 +85,13 @@ const Video = () => {
     return myAreas;
   };
   const renderVideoUploadSteps = () => {
+
     return (
-      <Box sx={{ maxWidth: 400 }} > {/*sx={{ marginY: "1rem" }}*/}
-        <Stepper activeStep={activeStep} orientation="vertical">
+      <Box sx={{ maxWidth: 400 , marginY: "1rem"  }} > 
+        <Stepper activeStep={activeStep} orientation="vertical" >
           {steps.map((step, index) => (
-            <Step key={step.label}>
+            <Step  key={step.label}>
+              
               <StepLabel
                 optional={
                   index === steps?.length - 1 ? (
@@ -95,6 +105,8 @@ const Video = () => {
                     borderRadius: 10,
                     marginLeft: -6,
                     marginRight: 1,
+                    background: "#2856AF",
+                    color:'white'
                   }}
                 >
                   {index + 1}
@@ -173,7 +185,7 @@ const Video = () => {
   };
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="" subtitle="Ajouter une Video." />
+      {/*<Header title="" subtitle="Ajouter une Video." />*/}
       <FlexBetween pl={3}>
         <Grid
           container
@@ -191,37 +203,81 @@ const Video = () => {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <img src={logo} alt="logo" />
+                  {/*<img src={logo} alt="logo" />*/}
                   <Header
                     title="Salta3"
                     subtitle="Soyez le bienvenue dans l'espace publicitaire Salta3 !"
                   />
                 </Grid>
 
-                <Typography>
+                <Typography 
+                  color={theme.palette.secondary[100]}
+                  fontFamily="DM sans"
+                  fontSize="20px"
+                  style={{ marginBottom: '22px' }}
+                >
                   Pour importer votre vidéo publicitaire, il vous suffit de
-                  suivre quelques étapes simples et efficaces. <br />
+                  suivre quelques étapes simples et efficaces. 
+                </Typography>
+
+                <Typography 
+                  color={theme.palette.secondary[100]}
+                  fontFamily="DM sans"
+                  fontSize="20px"
+                  style={{ marginBottom: '22px' }}
+                >
                   Tout d'abord, sur la première interface, vous pouvez importer
                   votre vidéo publicitaire et ajouter des informations basiques
                   telles que le nom de la publicité, sa description ciblée,
                   ainsi que vos informations de contact pour être facilement
                   joignable.
-                  <br /> Ensuite, sur la deuxième interface, vous pouvez définir
+                  </Typography>
+
+                  <Typography 
+                  color={theme.palette.secondary[100]}
+                  fontFamily="DM sans"
+                  fontSize="20px"
+                  style={{ marginBottom: '22px' }}
+                >
+                   Ensuite, sur la deuxième interface, vous pouvez définir
                   votre audience en utilisant des critères tels que la
                   localisation géographique, les centres d'intérêts, la tranche
                   d'âge et le genre. Avec la troisième interface, vous pouvez
                   classer vos critères de ciblage selon leur priorité et choisir
                   la durée pendant laquelle l'algorithme de ciblage passe d'une
                   phase à une autre.
-                  <br /> Vous pouvez également planifier le moment précis où
+                  </Typography>
+
+                  <Typography 
+                  color={theme.palette.secondary[100]}
+                  fontFamily="DM sans"
+                  fontSize="20px"
+                  style={{ marginBottom: '22px' }}
+                >
+                   Vous pouvez également planifier le moment précis où
                   vous souhaitez que votre publicité soit diffusée en utilisant
                   le calendrier et l'horloge dans la dernière interface.
-                  <br /> Vous pouvez également sélectionner le nombre de vues
+                  </Typography>
+                  <Typography 
+                  color={theme.palette.secondary[100]}
+                  fontFamily="DM sans"
+                  fontSize="20px"
+                  style={{ marginBottom: '22px' }}
+                >
+                   Vous pouvez également sélectionner le nombre de vues
                   que vous souhaitez acheter pour votre publicité. Enfin, une
                   interface supplémentaire est disponible pour les annonceurs
                   qui souhaitent ajouter des quiz ou des questionnaires QCM à
                   leur publicité.
-                  <br /> Dans cette interface, les annonceurs peuvent écrire des
+                  </Typography>
+
+                   <Typography 
+                  color={theme.palette.secondary[100]}
+                  fontFamily="DM sans"
+                  fontSize="20px"
+                  style={{ marginBottom: '22px' }}
+                >
+                   Dans cette interface, les annonceurs peuvent écrire des
                   questions qui vérifient si les utilisateurs ont bien compris
                   les informations clés de la publicité, comme les détails du
                   produit ou du service à promouvoir. <br />
@@ -235,8 +291,9 @@ const Video = () => {
                     alignItems="center"
                   >
                     <Button
+
                       variant="contained"
-                      sx={{ mt: 1, mr: 1, color: "white", background: "red" }}
+                      sx={{ mt: 5, mb: 5,  mr: 1, color: "white", background: "red", fontFamily: "DM sans", fontSize: '15px' ,p: '10px 20px' }}
                       onClick={handleUploadClick}
                     >
                       Demarer
@@ -245,7 +302,7 @@ const Video = () => {
                 </Typography>
               </>
             )}
-            {forumVideo.upload && activeStep == 0 && (
+            {forumVideo.upload && activeStep === 0 && (
               <>
                 <Header title="" subtitle="Importer" />
                 <FormControl
@@ -385,7 +442,7 @@ const Video = () => {
             )}
 
 
-            {forumVideo.upload && activeStep == 1 && (
+            {forumVideo.upload && activeStep === 1 && (
               <>
                 <Header title="" subtitle="Filtrage par zone geographique" />
                 <Grid xs={4}>

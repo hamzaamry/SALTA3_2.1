@@ -4,16 +4,22 @@ import React from "react";
 const Header = ({ title, subtitle }) => {
   const theme = useTheme();
   return (
-    <Box>
+    <Box sx={{ textAlign: "center" }} >
       <Typography
         variant="h2"
-        color={theme.palette.secondary[100]}
+        color={theme.palette.secondary[300]}
         fontWeight="bold"
         sx={{ mb: "5px" }}
       >
         {title}
       </Typography>
-      <Typography variant="h5" color={theme.palette.secondary[300]}>
+      <Typography 
+        variant="h2" 
+        color={theme.palette.secondary[300]}
+        fontFamily="DM Sans"
+        fontWeight="600"
+  
+      >
         {subtitle}
       </Typography>
     </Box>
