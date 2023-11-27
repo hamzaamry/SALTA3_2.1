@@ -9,6 +9,15 @@ import Dashboard from "./scenes/dashboard";
 import Profil from "./scenes/profil";
 import Video from "./scenes/video";
 
+import Step1 from './scenes/video/steps/Step1'
+import Step2 from './scenes/video/steps/Step2'
+import Step3 from './scenes/video/steps/Step3'
+import Step4 from './scenes/video/steps/Step4'
+import Step5 from './scenes/video/steps/Step5'
+import Step6 from './scenes/video/steps/Step6'
+
+
+
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings("light")), [mode]);
@@ -19,10 +28,20 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route element={<Layout />}>
+
               <Route path="/" element={<Navigate to="/acceuil" replace />} />
               <Route path="/acceuil" element={<Dashboard />} />
               <Route path="/profil" element={<Profil />} />
               <Route path="/ajouter une video" element={<Video />} />
+
+
+              <Route path="/step1" element={<Step1 />} />
+              <Route path="/step2" element={<Step2 />} />
+              <Route path="/step3" element={<Step3 />} />
+              <Route path="/step4" element={<Step4 />} />
+              <Route path="/step5" element={<Step5 />} />
+              <Route path="/step5" element={<Step6 />} />
+              
             </Route>
           </Routes>
         </ThemeProvider>
