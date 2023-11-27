@@ -1,22 +1,6 @@
 import React, { useState } from "react";
 import datamaps from "./maps/TunisGeo.json";
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  Input,
-  InputAdornment,
-  InputLabel,
-  Paper,
-  Step,
-  StepContent,
-  StepLabel,
-  Stepper,
-  TextField,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, FormControl, Grid, Input, InputAdornment, InputLabel, Paper, Step, StepContent, StepLabel, Stepper, Typography, useTheme,} from "@mui/material";
 import CheckboxTree from "react-checkbox-tree";
 import { TextareaAutosize } from "@mui/base";
 //import { useGetGeographyQuery } from "state/api";
@@ -27,18 +11,17 @@ import FlexBetween from "../../components/FlexBetween";
 import { AccountCircle } from "@mui/icons-material";
 //import { DropzoneArea } from "material-ui-dropzone";
 
+import styled from "styled-components";
 
 const Video = () => {
-
   const theme = useTheme();
 
   const [forumVideo, setForumVideo] = useState({
-    upload: false
+    upload: false,
   });
   const [checked, setChecked] = useState([]);
   const [expanded, setExpanded] = useState([]);
 
-  
   const steps = [
     {
       label: "importez votre publicité.",
@@ -73,7 +56,6 @@ const Video = () => {
     setActiveStep(0);
   };
   const renderAreas = (areas) => {
-
     let myAreas = [];
 
     for (let area of areas) {
@@ -84,14 +66,28 @@ const Video = () => {
     }
     return myAreas;
   };
-  const renderVideoUploadSteps = () => {
 
+
+  const StyledStepLabel = styled.div`
+    font-size: 30px;
+    font-family: "DM sans";
+    color: ${theme.palette.grey[400]}
+  `;
+
+  const StyledStepNumber = styled(Button)`
+    border-radius: 10px;
+    margin-left: -6px;
+    margin-right: 1px;
+    background: #2856af;
+    color: white;
+  `;
+
+  const renderVideoUploadSteps = () => {
     return (
-      <Box sx={{ maxWidth: 400 , marginY: "1rem"  }} > 
-        <Stepper activeStep={activeStep} orientation="vertical" >
+      <Box sx={{ maxWidth: 400, marginY: "1rem" }}>
+        <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((step, index) => (
-            <Step  key={step.label}>
-              
+            <Step key={step.label}>
               <StepLabel
                 optional={
                   index === steps?.length - 1 ? (
@@ -99,19 +95,12 @@ const Video = () => {
                   ) : null
                 }
               >
-                <Button
-                  variant="contained"
-                  sx={{
-                    borderRadius: 10,
-                    marginLeft: -6,
-                    marginRight: 1,
-                    background: "#2856AF",
-                    color:'white'
-                  }}
-                >
-                  {index + 1}
-                </Button>{" "}
-                {step.label}
+                <StyledStepLabel>
+                  <StyledStepNumber variant="contained">
+                    {index + 1}
+                  </StyledStepNumber>
+                  {step.label}
+                </StyledStepLabel>
               </StepLabel>
               {forumVideo.upload && (
                 <StepContent>
@@ -210,74 +199,74 @@ const Video = () => {
                   />
                 </Grid>
 
-                <Typography 
-                  color={theme.palette.secondary[100]}
+                <Typography
+                  color={theme.palette.grey[500]}
                   fontFamily="DM sans"
                   fontSize="20px"
-                  style={{ marginBottom: '22px' }}
+                  style={{ marginBottom: "22px" }}
                 >
                   Pour importer votre vidéo publicitaire, il vous suffit de
-                  suivre quelques étapes simples et efficaces. 
+                  suivre quelques étapes simples et efficaces.
                 </Typography>
 
-                <Typography 
-                  color={theme.palette.secondary[100]}
+                <Typography
+                  color={theme.palette.grey[500]}
                   fontFamily="DM sans"
                   fontSize="20px"
-                  style={{ marginBottom: '22px' }}
+                  style={{ marginBottom: "22px" }}
                 >
                   Tout d'abord, sur la première interface, vous pouvez importer
                   votre vidéo publicitaire et ajouter des informations basiques
                   telles que le nom de la publicité, sa description ciblée,
                   ainsi que vos informations de contact pour être facilement
                   joignable.
-                  </Typography>
+                </Typography>
 
-                  <Typography 
-                  color={theme.palette.secondary[100]}
+                <Typography
+                  color={theme.palette.grey[500]}
                   fontFamily="DM sans"
                   fontSize="20px"
-                  style={{ marginBottom: '22px' }}
+                  style={{ marginBottom: "22px" }}
                 >
-                   Ensuite, sur la deuxième interface, vous pouvez définir
-                  votre audience en utilisant des critères tels que la
-                  localisation géographique, les centres d'intérêts, la tranche
-                  d'âge et le genre. Avec la troisième interface, vous pouvez
-                  classer vos critères de ciblage selon leur priorité et choisir
-                  la durée pendant laquelle l'algorithme de ciblage passe d'une
-                  phase à une autre.
-                  </Typography>
+                  Ensuite, sur la deuxième interface, vous pouvez définir votre
+                  audience en utilisant des critères tels que la localisation
+                  géographique, les centres d'intérêts, la tranche d'âge et le
+                  genre. Avec la troisième interface, vous pouvez classer vos
+                  critères de ciblage selon leur priorité et choisir la durée
+                  pendant laquelle l'algorithme de ciblage passe d'une phase à
+                  une autre.
+                </Typography>
 
-                  <Typography 
-                  color={theme.palette.secondary[100]}
+                <Typography
+                  color={theme.palette.grey[500]}
                   fontFamily="DM sans"
                   fontSize="20px"
-                  style={{ marginBottom: '22px' }}
+                  style={{ marginBottom: "22px" }}
                 >
-                   Vous pouvez également planifier le moment précis où
-                  vous souhaitez que votre publicité soit diffusée en utilisant
-                  le calendrier et l'horloge dans la dernière interface.
-                  </Typography>
-                  <Typography 
-                  color={theme.palette.secondary[100]}
+                  Vous pouvez également planifier le moment précis où vous
+                  souhaitez que votre publicité soit diffusée en utilisant le
+                  calendrier et l'horloge dans la dernière interface.
+                </Typography>
+                <Typography
+                  color={theme.palette.grey[500]}
                   fontFamily="DM sans"
                   fontSize="20px"
-                  style={{ marginBottom: '22px' }}
+                  style={{ marginBottom: "22px" }}
                 >
-                   Vous pouvez également sélectionner le nombre de vues
-                  que vous souhaitez acheter pour votre publicité. Enfin, une
-                  interface supplémentaire est disponible pour les annonceurs
-                  qui souhaitent ajouter des quiz ou des questionnaires QCM à
-                  leur publicité.
-                  </Typography>
+                  Vous pouvez également sélectionner le nombre de vues que vous
+                  souhaitez acheter pour votre publicité. Enfin, une interface
+                  supplémentaire est disponible pour les annonceurs qui
+                  souhaitent ajouter des quiz ou des questionnaires QCM à leur
+                  publicité.
+                </Typography>
 
-                   <Typography 
-                  color={theme.palette.secondary[100]}
+                <Typography
+                  color={theme.palette.grey[500]}
                   fontFamily="DM sans"
                   fontSize="20px"
-                  style={{ marginBottom: '22px' }}
+                  style={{ marginBottom: "22px" }}
                 >
-                   Dans cette interface, les annonceurs peuvent écrire des
+                  Dans cette interface, les annonceurs peuvent écrire des
                   questions qui vérifient si les utilisateurs ont bien compris
                   les informations clés de la publicité, comme les détails du
                   produit ou du service à promouvoir. <br />
@@ -291,9 +280,17 @@ const Video = () => {
                     alignItems="center"
                   >
                     <Button
-
                       variant="contained"
-                      sx={{ mt: 5, mb: 5,  mr: 1, color: "white", background: "red", fontFamily: "DM sans", fontSize: '15px' ,p: '10px 20px' }}
+                      sx={{
+                        mt: 5,
+                        mb: 5,
+                        mr: 1,
+                        color: "white",
+                        background: "red",
+                        fontFamily: "DM sans",
+                        fontSize: "15px",
+                        p: "10px 20px",
+                      }}
                       onClick={handleUploadClick}
                     >
                       Demarer
@@ -341,9 +338,7 @@ const Video = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <Grid xs={5}>
-                    {/*<DropzoneArea />*/}
-                  </Grid>
+                  <Grid xs={5}>{/*<DropzoneArea />*/}</Grid>
                   <Grid
                     xs={5}
                     sx={{
@@ -407,7 +402,6 @@ const Video = () => {
                     fullWidth
                     label="fullWidth"
                     id="fullWidth"
-
                   >
                     <InputLabel htmlFor="input-with-icon-adornment">
                       Nom de votre publicité
@@ -424,7 +418,6 @@ const Video = () => {
                     fullWidth
                     label="fullWidth"
                     id="fullWidth"
-
                   >
                     <InputLabel htmlFor="input-with-icon-adornment">
                       Nom de votre publicité
@@ -437,33 +430,25 @@ const Video = () => {
                     />
                   </FormControl>
                 </Grid>{" "}
-
               </>
             )}
-
 
             {forumVideo.upload && activeStep === 1 && (
               <>
                 <Header title="" subtitle="Filtrage par zone geographique" />
-                <Grid xs={4}>
-                  {renderFilterBar()}
-
-                </Grid>
+                <Grid xs={4}>{renderFilterBar()}</Grid>
                 <Grid
                   xs={8}
                   sx={{
                     maxHeight: "60vh",
                   }}
-                >
-
-                </Grid>
-
+                ></Grid>
               </>
             )}
           </Grid>
         </Grid>
       </FlexBetween>
-    </Box >
+    </Box>
   );
 };
 
