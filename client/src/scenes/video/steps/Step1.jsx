@@ -3,6 +3,7 @@ import HorizontalStepper from "../../../components/HorizontalStepper";
 import { Typography, Box, TextField, Button } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
+import MapCard from "../../../components/MapCard";
 
 const Step1 = () => {
   const navigate = useNavigate();
