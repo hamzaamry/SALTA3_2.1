@@ -149,8 +149,9 @@ const Step2 = () => {
             background: "red",
             fontFamily: "DM sans",
             fontSize: "20px",
-            fontWeight: '700',
+            fontWeight: '400',
             p: "10px 40px",
+            borderRadius:'8px',
           }}
           onClick={handleUploadClick}
         >

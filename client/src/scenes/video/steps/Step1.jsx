@@ -13,7 +13,6 @@ const Step1 = () => {
   };
 
   const onDrop = useCallback((acceptedFiles) => {
-    // Handle dropped files here
     console.log("Dropped files:", acceptedFiles);
   }, []);
 
@@ -172,6 +171,7 @@ const Step1 = () => {
             fontFamily: "DM sans",
             fontSize: "15px",
             p: "10px 20px",
+            borderRadius:'8px',
           }}
           onClick={handleUploadClick}
         >

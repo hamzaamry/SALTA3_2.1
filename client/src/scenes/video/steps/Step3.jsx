@@ -130,6 +130,7 @@ const Step3 = () => {
             fontSize: "20px",
             fontWeight: '500',
             p: "10px 40px",
+            borderRadius:'8px',
           }}
           onClick={handleUploadClick}
         >
