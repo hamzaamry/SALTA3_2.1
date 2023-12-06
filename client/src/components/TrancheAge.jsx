@@ -16,7 +16,7 @@ const TrancheAge = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        height: "100%", // Set to 100% of the viewport height
+        height: "100%", 
       }}
     >
       <Typography
