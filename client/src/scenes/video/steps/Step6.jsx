@@ -3,6 +3,9 @@ import HorizontalStepper from "../../../components/HorizontalStepper";
 import { Typography, Box, TextField, IconButton, Stack , Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UploadIcon from "@mui/icons-material/Upload";
+import Checkbox from "@mui/material/Checkbox";
+
+
 
 const Step6 = () => {
   const navigate = useNavigate();
@@ -10,6 +13,8 @@ const Step6 = () => {
    const handleUploadClick = () => {
     navigate("/step5");
   }; 
+
+  const [correctResponses, setCorrectResponses] = useState([]);
 
   const [questions, setQuestions] = useState([
     {
@@ -138,6 +143,7 @@ const Step6 = () => {
                       alignItems="center"
                       style={{ alignItems: "center", justifyContent: "center" }}
                     >
+                      
                       <TextField
                         required
                         id={`response-${response.id}`}
@@ -165,6 +171,26 @@ const Step6 = () => {
                           />
                         </IconButton>
                       </Box>
+                      
+                  <Checkbox
+                  style={{ color: "#1DC9A0" , marginLeft: "2rem" , marginTop: '0.5rem' }}
+                    checked={correctResponses.includes(response.id)}
+                    onChange={() => {
+                     
+                      setCorrectResponses((prevResponses) =>
+                        prevResponses.includes(response.id)
+                          ? prevResponses.filter(
+                              (prevResponse) => prevResponse !== response.id
+                            )
+                          : [...prevResponses, response.id]
+                      );
+                    }}
+
+                    sx={{
+                      transform: "scale(1.7)", 
+                    }}
+
+                  />
                     </Stack>
                   </div>
                 ))}
