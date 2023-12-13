@@ -16,6 +16,9 @@ import Step4 from './scenes/video/steps/Step4'
 import Step5 from './scenes/video/steps/Step5'
 import Step6 from './scenes/video/steps/Step6'
 
+import Signin from "./scenes/pages/Signin";
+import Signup from "./scenes/pages/Signup";
+
 
 
 function App() {
@@ -28,12 +31,10 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route element={<Layout />}>
-
               <Route path="/" element={<Navigate to="/acceuil" replace />} />
               <Route path="/acceuil" element={<Dashboard />} />
               <Route path="/profil" element={<Profil />} />
               <Route path="/ajouter une video" element={<Video />} />
-
 
               <Route path="/step1" element={<Step1 />} />
               <Route path="/step2" element={<Step2 />} />
@@ -41,8 +42,9 @@ function App() {
               <Route path="/step4" element={<Step4 />} />
               <Route path="/step5" element={<Step5 />} />
               <Route path="/step6" element={<Step6 />} />
-             
 
+              <Route path="/Signin" element={<Signin />} />
+              <Route path="/Signup" element={<Signup />} />
             </Route>
           </Routes>
         </ThemeProvider>

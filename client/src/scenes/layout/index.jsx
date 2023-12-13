@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, useMediaQuery } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Sidebar from "../../components/Sidebar";
-import { useGetUserQuery } from "../../state/api.js"
-import Navbar from "../../components/Navbar"
+import { useGetUserQuery } from "../../state/api.js";
+import Navbar from "../../components/Navbar";
+import TopBar from "../../components/LandingPage/TopBar";
 
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const userId = useSelector((state) => state.global.userId);
   const { data } = useGetUserQuery(userId);
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if the user is authenticated
+    setIsAuthenticated(false); //!!userId
+  }, [userId]);
+
+  useEffect(() => {
+    // Hide sidebar on "/Signin" and "/Signup" routes
+    const hideSidebarRoutes = ["/Signin", "/Signup"];
+    setIsSidebarOpen(!hideSidebarRoutes.includes(location.pathname));
+  }, [location.pathname]);
 
   return (
     <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
@@ -23,11 +37,15 @@ const Layout = () => {
         setIsSidebarOpen={setIsSidebarOpen}
       />
       <Box flexGrow={1}>
-        <Navbar
-          user={data || {}}
-          isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
-        />
+        {isAuthenticated ? (
+          <Navbar
+            user={data || {}}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
+        ) : (
+          <TopBar />
+        )}
         <Outlet />
       </Box>
     </Box>
