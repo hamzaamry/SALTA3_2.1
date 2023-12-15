@@ -13,7 +13,6 @@ const Signin = () => {
         style={{
           minHeight: "90vh",
           padding: "2rem",
-          
         }}
       >
         <Box
