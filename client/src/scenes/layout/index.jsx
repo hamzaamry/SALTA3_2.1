@@ -17,13 +17,12 @@ const Layout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Check if the user is authenticated
     setIsAuthenticated(false); //!!userId
   }, [userId]);
 
   useEffect(() => {
-    // Hide sidebar on "/Signin" and "/Signup" routes
-    const hideSidebarRoutes = ["/Signin", "/Signup"];
+
+    const hideSidebarRoutes = ["/Signin", "/Signup" , "/home"];
     setIsSidebarOpen(!hideSidebarRoutes.includes(location.pathname));
   }, [location.pathname]);
 

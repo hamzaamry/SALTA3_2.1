@@ -19,6 +19,9 @@ import Step6 from './scenes/video/steps/Step6'
 import Signin from "./scenes/pages/Signin";
 import Signup from "./scenes/pages/Signup";
 
+import HomePage from "./scenes/pages/HomePage";
+
+
 
 
 function App() {
@@ -45,6 +48,10 @@ function App() {
 
               <Route path="/Signin" element={<Signin />} />
               <Route path="/Signup" element={<Signup />} />
+
+              <Route path="/Home" element={<HomePage />} />
+
+
             </Route>
           </Routes>
         </ThemeProvider>
