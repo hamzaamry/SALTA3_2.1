@@ -2,6 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, Typography, Button, Link } from "@mui/material";
 
 import { useLocation } from "react-router-dom";
+import logo from "../../assets/png/logo.png"
 
 const TopBar = () => {
   const location = useLocation(); 
@@ -12,6 +13,13 @@ const TopBar = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: "#FFF0EE" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+
+      <div style={{
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: 'center'
+      }} >
+        <img src={logo} alt="logo" width="60rem" />
         <Typography
           variant="h6"
           sx={{
@@ -24,6 +32,8 @@ const TopBar = () => {
         >
           Salta3
         </Typography>
+
+        </div>
         <div
           sx={{
             display: "flex",
